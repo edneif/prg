@@ -115,7 +115,7 @@ void imprimi_lista_tras ( lista_enc_t * lista )
 
 
 
-void* exc_cabeca(lista_enc_t *lista)
+void exc_cabeca(lista_enc_t *lista)
 {
 
     if (lista->tamanho <= 0)
@@ -133,19 +133,20 @@ void* exc_cabeca(lista_enc_t *lista)
         desligar_no_anterior(lista->cabeca);
     	void* dado = obter_dado(cabeca_original);
         free(cabeca_original);
-        return dado;
+        free (dado);
+
 
     }
 
 
-    return NULL;
+
 
 }
 
 
 
 
-void* exc_cauda(lista_enc_t *lista)
+void exc_cauda(lista_enc_t *lista)
 {
 
 
@@ -163,12 +164,12 @@ void* exc_cauda(lista_enc_t *lista)
     	desligar_no_proximo(lista->cauda);
     	void* dado = obter_dado(cauda_original);
    	    free(cauda_original);
-   	    return dado;
+   	    free (dado);
+
 
     }
 
 
-    return NULL;
 
 }
 

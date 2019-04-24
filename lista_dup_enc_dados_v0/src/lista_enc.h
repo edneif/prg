@@ -44,7 +44,7 @@ void imprimi_lista ( lista_enc_t * lista );
   * @param	lista: lista que se deseja imprimir.
   *
   */
-void* exc_cabeca(lista_enc_t *lista);
+void exc_cabeca(lista_enc_t *lista);
 
 
 
@@ -53,7 +53,7 @@ void* exc_cabeca(lista_enc_t *lista);
   * @param	lista: lista que se deseja imprimir.
   *
   */
-void* exc_cauda(lista_enc_t *lista);
+void exc_cauda(lista_enc_t *lista);
 
 
 
