@@ -1,0 +1,23 @@
+20:20:45 **** Incremental Build of configuration Debug for project lista_enc_v1 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\litas_enc_v0.o" "..\\src\\litas_enc_v0.c" 
+..\src\litas_enc_v0.c: In function 'main':
+..\src\litas_enc_v0.c:23:19: warning: implicit declaration of function 'ler_arquivo' [-Wimplicit-function-declaration]
+     minha_lista = ler_arquivo("dados.csv");
+                   ^~~~~~~~~~~
+..\src\litas_enc_v0.c:23:17: warning: assignment makes pointer from integer without a cast [-Wint-conversion]
+     minha_lista = ler_arquivo("dados.csv");
+                 ^
+..\src\litas_enc_v0.c:25:5: warning: implicit declaration of function 'imprimi_dados_lista' [-Wimplicit-function-declaration]
+     imprimi_dados_lista(minha_lista);
+     ^~~~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc.o" "..\\src\\lista_enc.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\no.o" "..\\src\\no.c" 
+gcc -o lista_enc_v1.exe "src\\lista_enc.o" "src\\litas_enc_v0.o" "src\\no.o" 
+src\litas_enc_v0.o: In function `main':
+C:\cpp-mars\work\lista_enc_v1\Debug/../src/litas_enc_v0.c:23: undefined reference to `ler_arquivo'
+C:\cpp-mars\work\lista_enc_v1\Debug/../src/litas_enc_v0.c:25: undefined reference to `imprimi_dados_lista'
+collect2.exe: error: ld returned 1 exit status
+
+20:20:47 Build Finished (took 2s.687ms)
+

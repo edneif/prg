@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;prova_1_rev1/src/prova_1.c&apos; to &apos;prova_1_rev1.c&apos;" description="Rename resource &apos;prova_1.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/prova_1.c" name="prova_1_rev1.c" stamp="1556107040783" updateReferences="true"/>
+</session>

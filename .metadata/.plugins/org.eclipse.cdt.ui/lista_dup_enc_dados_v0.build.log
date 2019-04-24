@@ -1,0 +1,8 @@
+10:37:50 **** Incremental Build of configuration Debug for project lista_dup_enc_dados_v0 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc.o" "..\\src\\lista_enc.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc_dados_v1.o" "..\\src\\lista_enc_dados_v1.c" 
+gcc -o lista_dup_enc_dados_v0.exe "src\\dados.o" "src\\lista_enc.o" "src\\lista_enc_dados_v1.o" "src\\no.o" 
+
+10:37:53 Build Finished (took 2s.636ms)
+

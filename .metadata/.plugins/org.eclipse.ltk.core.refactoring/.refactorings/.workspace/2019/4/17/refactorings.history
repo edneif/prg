@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;Copy of prova_1&apos; to &apos;prova_1_rev1&apos;" description="Rename resource &apos;Copy of prova_1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Copy of prova_1" name="prova_1_rev1" stamp="1556023433738" updateReferences="true"/>&#x0A;&#x0A;&#x0A;<refactoring comment="Rename resource &apos;Copy of lista_enc_dados_v1&apos; to &apos;lista_dup_enc_dados_v0&apos;" description="Rename resource &apos;Copy of lista_enc_dados_v1&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="/Copy of lista_enc_dados_v1" name="lista_dup_enc_dados_v0" stamp="1556108617934" updateReferences="true"/>
+</session>

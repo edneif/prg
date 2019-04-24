@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lista_enc_v0/src/lita_enc_v0.c&apos; to &apos;litas_enc_v0.c&apos;" description="Rename resource &apos;lita_enc_v0.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/lita_enc_v0.c" name="litas_enc_v0.c" stamp="1552659158006" updateReferences="true"/>
+</session>

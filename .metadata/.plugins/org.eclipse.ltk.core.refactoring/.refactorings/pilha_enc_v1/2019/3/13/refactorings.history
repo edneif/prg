@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;pilha_enc_v1/src/pilha_enc_v0.c&apos; to &apos;pilha_enc_v1.c&apos;" description="Rename resource &apos;pilha_enc_v0.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/pilha_enc_v0.c" name="pilha_enc_v1.c" stamp="1553553354043" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;pilha_enc_v1/src/pilha_enc_v0.c&apos; to &apos;pilha_enc_v1.c&apos;" description="Rename resource &apos;pilha_enc_v0.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/pilha_enc_v0.c" name="pilha_enc_v1.c" stamp="1553553513739" updateReferences="true"/>
+</session>

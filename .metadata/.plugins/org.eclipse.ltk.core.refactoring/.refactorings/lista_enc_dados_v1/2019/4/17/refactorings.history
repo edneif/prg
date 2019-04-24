@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lista_enc_dados_v1/src/lista_enc_dados_v0.c&apos; to &apos;lista_enc_dados_v1.c&apos;" description="Rename resource &apos;lista_enc_dados_v0.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/lista_enc_dados_v0.c" name="lista_enc_dados_v1.c" stamp="1556107469401" updateReferences="true"/>
+</session>
