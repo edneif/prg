@@ -65,7 +65,10 @@ int  qtd_elementos (lista_enc_t *lista );
 lista_enc_t* inverte_lista(lista_enc_t* lista);
 
 
+void libera_memoria_lista_inv(lista_enc_t *lista_inv);
+
 
 
 
 #endif // LISTA_ENC_H_INCLUDED
+

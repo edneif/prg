@@ -30,7 +30,6 @@ void imprime_dados_lista(lista_enc_t *lista);
 
 void libera_memoria_lista(lista_enc_t *lista);
 
-void libera_memoria_lista_inv(lista_enc_t *lista_inv);
 
 
 

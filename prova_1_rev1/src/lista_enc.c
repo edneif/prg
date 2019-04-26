@@ -185,3 +185,26 @@ printf("Adicionando lista_inv %p --- ", meu_no);
 	return lista_inv;
 
 }
+
+
+void libera_memoria_lista_inv(lista_enc_t *lista_inv)
+
+{
+
+	no_t *no_anterior;
+	no_t *meu_no = obter_cabeca(lista_inv);
+
+
+	while (meu_no) {
+
+		no_anterior = meu_no;
+		meu_no = obter_proximo(meu_no);
+		free(no_anterior);
+	}
+
+	free(lista_inv);
+
+
+}
+
+
