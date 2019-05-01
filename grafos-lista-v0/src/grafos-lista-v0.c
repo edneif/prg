@@ -137,7 +137,7 @@ int main(void) {
 	libera_fila(fila);
 	libera_grafo(grafo);
 
-	printf ("fim progr");
+	printf ("fim programa");
 
 	return EXIT_SUCCESS;
 }
