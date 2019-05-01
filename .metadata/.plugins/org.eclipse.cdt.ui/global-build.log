@@ -1,25 +1,4 @@
-..\src\grafo\grafo.c: In function 'bfs':
-..\src\grafo\grafo.c:56:25: warning: passing argument 1 of 'vertice_set_distancia' from incompatible pointer type [-Wincompatible-pointer-types]
-   vertice_set_distancia(meu_no_vertice, INFINITO);
-                         ^~~~~~~~~~~~~~
-In file included from ..\src\grafo\grafo.h:18:0,
-                 from ..\src\grafo\grafo.c:19:
-..\src\grafo\vertice.h:63:6: note: expected 'vertice_t * {aka struct vertices *}' but argument is of type 'no_t * {aka struct nos *}'
- void vertice_set_distancia(vertice_t *vertice, int distancia);
-      ^~~~~~~~~~~~~~~~~~~~~
-..\src\grafo\grafo.c:57:19: warning: passing argument 1 of 'vertice_set_pai' from incompatible pointer type [-Wincompatible-pointer-types]
-   vertice_set_pai(meu_no_vertice,NULL);
-                   ^~~~~~~~~~~~~~
-In file included from ..\src\grafo\grafo.h:18:0,
-                 from ..\src\grafo\grafo.c:19:
-..\src\grafo\vertice.h:67:6: note: expected 'vertice_t * {aka struct vertices *}' but argument is of type 'no_t * {aka struct nos *}'
- void vertice_set_pai(vertice_t *vertice, vertice_t *pai);
-      ^~~~~~~~~~~~~~~
-..\src\grafo\grafo.c:71:13: warning: unused variable 'u' [-Wunused-variable]
-  vertice_t *u = dequeue(Q);
-             ^
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc\\lista_enc.o" "..\\src\\lista_enc\\lista_enc.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc\\no.o" "..\\src\\lista_enc\\no.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafo\\vertice.o" "..\\src\\grafo\\vertice.c" 
+16:14:18 **** Incremental Build of configuration Debug for project grafos-lista-v0 ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafos-lista-v0.o" "..\\src\\grafos-lista-v0.c" 
 gcc -o grafos-lista-v0.exe "src\\fila\\fila.o" "src\\grafo\\grafo.o" "src\\grafo\\vertice.o" "src\\grafos-lista-v0.o" "src\\lista_enc\\lista_enc.o" "src\\lista_enc\\no.o" "src\\pilha\\pilha.o" 
-Info: Nothing to build for grafos-lista-v0
