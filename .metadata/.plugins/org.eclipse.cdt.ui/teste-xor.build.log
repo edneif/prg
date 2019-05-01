@@ -1,0 +1,17 @@
+16:03:19 **** Incremental Build of configuration Debug for project teste-xor ****
+Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\teste-xor.o" "..\\src\\teste-xor.c" 
+..\src\teste-xor.c: In function 'main':
+..\src\teste-xor.c:21:2: error: 'd' undeclared (first use in this function)
+  d =0x200;  //xor
+  ^
+..\src\teste-xor.c:21:2: note: each undeclared identifier is reported only once for each function it appears in
+..\src\teste-xor.c:16:19: warning: unused variable 'rpro' [-Wunused-variable]
+  int a,b,c,r,rant,rpro;
+                   ^~~~
+..\src\teste-xor.c:16:10: warning: variable 'c' set but not used [-Wunused-but-set-variable]
+  int a,b,c,r,rant,rpro;
+          ^
+
+16:03:20 Build Finished (took 619ms)
+
