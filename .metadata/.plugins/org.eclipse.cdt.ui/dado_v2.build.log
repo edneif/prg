@@ -1,7 +1,0 @@
-19:42:01 **** Incremental Build of configuration Debug for project dado_v2 ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\dado.o" "..\\src\\dado.c" 
-gcc -o dado_v2.exe "src\\dado.o" "src\\tratadado.o" 
-
-19:42:03 Build Finished (took 1s.795ms)
-

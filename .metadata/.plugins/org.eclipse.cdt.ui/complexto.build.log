@@ -1,8 +1,0 @@
-19:48:40 **** Rebuild of configuration Debug for project complexto ****
-Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\ponto.o" "..\\src\\ponto.c" 
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\complexto.o" "..\\src\\complexto.c" 
-gcc -o complexto "src\\complexto.o" "src\\ponto.o" 
-
-19:48:42 Build Finished (took 2s.91ms)
-

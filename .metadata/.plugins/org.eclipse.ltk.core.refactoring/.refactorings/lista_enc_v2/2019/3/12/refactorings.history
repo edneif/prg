@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;lista_enc_v2/src/dado.c&apos; to &apos;dados.c&apos;" description="Rename resource &apos;dado.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/dado.c" name="dados.c" stamp="1553129756880" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;lista_enc_v2/src/dado.h&apos; to &apos;dados.h&apos;" description="Rename resource &apos;dado.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/dado.h" name="dados.h" stamp="1553129780459" updateReferences="true"/>
-</session>
