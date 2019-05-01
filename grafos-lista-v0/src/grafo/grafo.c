@@ -43,8 +43,37 @@ struct grafos {
   *
   * @retval Nenhum: Vértices são marcados internamente
   */
-void bfs(grafo_t *grafo, vertice_t* inicial)
+void bfs(grafo_t *grafo, vertice_t* vertice_inicial)
 {
+
+	fila_t *Q = cria_fila();
+
+	no_t *meu_no_vertice = obter_cabeca(grafo->vertices);
+
+	while(meu_no_vertice)
+	{
+
+		vertice_set_distancia(meu_no_vertice, INFINITO);
+		vertice_set_pai(meu_no_vertice,NULL);
+
+		meu_no_vertice = obtem_proximo(meu_no_vertice);
+
+	}
+
+	vertice_set_distancia(vertice_inicial, 0);
+	enqueue(vertice_inicial, Q);
+
+
+
+	while (!fila_vazia(Q))
+	{
+
+	vertice_t *u = dequeue(Q);
+
+
+
+
+	}
 
 
 

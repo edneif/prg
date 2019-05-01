@@ -23,9 +23,9 @@ int main() {
 
 	lista = ler_arquivo("dados.csv");
 
-    imprimi_dados_lista_cabeca(lista);
+ //   imprimi_dados_lista_cabeca(lista);
 
- //   imprimi_dados_lista_cauda(lista);
+    imprimi_dados_lista_cauda(lista);
 
 	libera_memoria(lista);
 

@@ -27,6 +27,8 @@ struct vertices {
 	int id_grupo;
 	vertice_t* pai;
 
+	int distancia;   /*<Busca em largura*/
+
 };
 
 struct arestas {
@@ -58,6 +60,7 @@ vertice_t *cria_vertice(int id)
 	p->arestas = cria_lista_enc();
 	p->id_grupo = -1;
 	p->pai = NULL;
+	p->distancia = 0;
 
 	return p;
 }
@@ -286,3 +289,21 @@ void vertice_set_pai(vertice_t *vertice, vertice_t *pai) {
 	vertice->pai = pai;
 }
 
+
+
+/**
+  * @brief  Altera a propriedade distancia de um vértice
+  * @param	vertice: vértice em questão
+  * @param  distancia: distancia entre vertice fonte
+  *
+  * @retval Nenhum
+  */
+void vertice_set_distancia(vertice_t *vertice, int dist) {
+
+	if (vertice == NULL){
+			fprintf(stderr, "vertice_set_distancia: vertice invalido\n");
+			exit(EXIT_FAILURE);
+	}
+
+	vertice->distancia = dist;
+}
