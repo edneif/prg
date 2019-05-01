@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move &apos;dados.csv&apos; to &apos;teste_apagar&apos;" description="Move &apos;dados.csv&apos; to &apos;teste_apagar&apos;" destination="/teste_apagar" element1="src/dados.csv" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1555065021957" updateReferences="true"/>
-</session>

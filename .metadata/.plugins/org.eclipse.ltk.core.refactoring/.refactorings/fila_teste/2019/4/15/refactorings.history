@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;fila_teste/src/fila_enc_v0.c&apos; to &apos;fila_teste.c&apos;" description="Rename resource &apos;fila_enc_v0.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/fila_enc_v0.c" name="fila_teste.c" stamp="1554929435881" updateReferences="true"/>
-</session>
