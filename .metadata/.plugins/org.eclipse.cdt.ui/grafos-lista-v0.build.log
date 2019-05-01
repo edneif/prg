@@ -1,7 +1,7 @@
-16:22:13 **** Incremental Build of configuration Debug for project grafos-lista-v0 ****
+16:24:08 **** Incremental Build of configuration Debug for project grafos-lista-v0 ****
 Info: Internal Builder is used for build
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafos-lista-v0.o" "..\\src\\grafos-lista-v0.c" 
 gcc -o grafos-lista-v0.exe "src\\fila\\fila.o" "src\\grafo\\grafo.o" "src\\grafo\\vertice.o" "src\\grafos-lista-v0.o" "src\\lista_enc\\lista_enc.o" "src\\lista_enc\\no.o" "src\\pilha\\pilha.o" 
 
-16:22:15 Build Finished (took 1s.651ms)
+16:24:09 Build Finished (took 1s.734ms)
 
