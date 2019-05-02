@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;lista_dup_enc_dados_xor_v0/src/lista_enc_dados_v1.c&apos; to &apos;lista_enc_dados_xor_v0.c&apos;" description="Rename resource &apos;lista_enc_dados_v1.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/lista_enc_dados_v1.c" name="lista_enc_dados_xor_v0.c" stamp="1556454226121" updateReferences="true"/>
-</session>

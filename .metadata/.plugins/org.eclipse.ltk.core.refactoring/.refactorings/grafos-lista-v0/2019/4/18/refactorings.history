@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;grafos-lista-v0/src/fila&apos; to &apos;fila.c&apos;" description="Rename resource &apos;fila&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/fila" name="fila.c" stamp="1556545671694" updateReferences="true"/>
-</session>

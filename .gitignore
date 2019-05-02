@@ -1,5 +1,2 @@
 # ignora diretorio .metadata
 .metadata/
-*.*
-!*.c
-!*.h
