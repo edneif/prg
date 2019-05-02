@@ -22,15 +22,19 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #include "pilha/pilha.h"
 #include "fila/fila.h"
 #include "grafo/grafo.h"
 
+
+
 int main(void) {
 
 	grafo_t *grafo;
 	vertice_t* vertice;
+	vertice_t* vertice_inicial;
 
 	fila_t *fila;
 	int id;
@@ -39,8 +43,8 @@ int main(void) {
 	fila = cria_fila();
 
 	//Adiciona todos os vertices no grafo
-	vertice = grafo_adicionar_vertice(grafo, 1);
-	enqueue(vertice, fila);
+	vertice_inicial = grafo_adicionar_vertice(grafo, 1);
+	enqueue(vertice_inicial, fila);
 
 	vertice = grafo_adicionar_vertice(grafo, 2);
 	enqueue(vertice, fila);
@@ -132,12 +136,19 @@ int main(void) {
 		}
 	}
 
+
+	int *numero;
+	scanf("%i",&numero);
+
+
+	bfs(grafo, vertice_inicial);
+
 	exportar_grafo_dot("grafo.dot", grafo);
 
 	libera_fila(fila);
 	libera_grafo(grafo);
 
-	printf ("fim prog");
+	printf ("fim progr");
 
 	return EXIT_SUCCESS;
 }
