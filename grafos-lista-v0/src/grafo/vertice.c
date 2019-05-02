@@ -144,6 +144,29 @@ lista_enc_t *vertice_get_arestas(vertice_t *vertice)
 	return vertice->arestas;
 }
 
+
+
+
+/**
+  * @brief  Obtém a lista encadadeada de arestas: útil para obter todos vértices adjacentes
+  * @param	vertice: ponteiro do vértice
+  *
+  * @retval int: retorna a distancia do vertice
+  */
+int vertice_get_distancia(vertice_t *vertice)
+{
+	if (vertice == NULL){
+		fprintf(stderr, "vertice_get_distancia: vertice invalido\n");
+		exit(EXIT_FAILURE);
+	}
+
+	return vertice->distancia;
+}
+
+
+
+
+
 /**
   * @brief  Obtém o peso se uma aresta
   * @param	aresta: ponteiro da aresta
