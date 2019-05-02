@@ -1,5 +1,8 @@
-21:31:49 **** Incremental Build of configuration Debug for project grafos-lista-v0 ****
+07:25:21 **** Rebuild of configuration Debug for project grafos-lista-v0 ****
 Info: Internal Builder is used for build
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafos-lista-v0.o" "..\\src\\grafos-lista-v0.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc\\lista_enc.o" "..\\src\\lista_enc\\lista_enc.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\fila\\fila.o" "..\\src\\fila\\fila.c" 
 gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafo\\grafo.o" "..\\src\\grafo\\grafo.c" 
 ..\src\grafo\grafo.c: In function 'bfs':
 ..\src\grafo\grafo.c:54:25: warning: passing argument 1 of 'vertice_set_distancia' from incompatible pointer type [-Wincompatible-pointer-types]
@@ -21,7 +24,10 @@ In file included from ..\src\grafo\grafo.h:18:0,
 ..\src\grafo\grafo.c:81:53: warning: format '%p' expects argument of type 'void *', but argument 4 has type 'int' [-Wformat=]
      printf ("setando no %d, \t Distancia %d \t Pai:%p",
                                                      ^
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\grafo\\vertice.o" "..\\src\\grafo\\vertice.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\lista_enc\\no.o" "..\\src\\lista_enc\\no.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\pilha\\pilha.o" "..\\src\\pilha\\pilha.c" 
 gcc -o grafos-lista-v0.exe "src\\fila\\fila.o" "src\\grafo\\grafo.o" "src\\grafo\\vertice.o" "src\\grafos-lista-v0.o" "src\\lista_enc\\lista_enc.o" "src\\lista_enc\\no.o" "src\\pilha\\pilha.o" 
 
-21:31:49 Build Finished (took 618ms)
+07:25:27 Build Finished (took 6s.214ms)
 

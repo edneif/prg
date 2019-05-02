@@ -13,6 +13,7 @@
 #include "pilha.h"
 
 //#define DEBUG
+//teste
 
 #define FALSO 0
 #define VERDADEIRO 1
