@@ -137,7 +137,7 @@ int main(void) {
 	libera_fila(fila);
 	libera_grafo(grafo);
 
-	printf ("fim proggg");
+	printf ("fim proggksljdlag");
 
 	return EXIT_SUCCESS;
 }
