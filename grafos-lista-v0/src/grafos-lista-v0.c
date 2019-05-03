@@ -30,7 +30,10 @@
 
 
 
+
+
 int main(void) {
+
 
 	grafo_t *grafo;
 	vertice_t* vertice;
@@ -41,6 +44,8 @@ int main(void) {
 
 	grafo = cria_grafo(0);
 	fila = cria_fila();
+
+
 
 	//Adiciona todos os vertices no grafo
 	vertice_inicial = grafo_adicionar_vertice(grafo, 1);
@@ -137,16 +142,15 @@ int main(void) {
 	}
 
 
-	int *numero;
-	scanf("%i",&numero);
+
 
 
 	bfs(grafo, vertice_inicial);
 
-	exportar_grafo_dot("grafo.dot", grafo);
+	//exportar_grafo_dot("grafo.dot", grafo);
 
-	libera_fila(fila);
-	libera_grafo(grafo);
+	//libera_fila(fila);
+	//libera_grafo(grafo);
 
 	printf ("fim progr");
 

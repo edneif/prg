@@ -32,6 +32,8 @@
 
 #define INFINITO INT_MAX
 
+
+
 struct grafos {
 	int id; /*!< Identificação numérica do grafo  */
 	lista_enc_t *vertices; /*!< Lista encadeada dos vértices: conjunto V  */
@@ -47,14 +49,17 @@ struct grafos {
 void bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 
 	fila_t *Q = cria_fila();
+//	fflush(stdout);
 
 	no_t *meu_no_vertice = obter_cabeca(grafo->vertices);
 
+
+
 	while (meu_no_vertice)
 	{
-
-		vertice_set_distancia(meu_no_vertice , INFINITO);
-		vertice_set_pai(meu_no_vertice, NULL);
+        vertice_t *meu_vertice = obter_dado(meu_no_vertice);
+		vertice_set_distancia(meu_vertice , INFINITO);
+		vertice_set_pai(meu_vertice, NULL);
 
 		meu_no_vertice = obtem_proximo(meu_no_vertice);
 
@@ -72,15 +77,19 @@ void bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 		no_t *no_arest = obter_cabeca(lista_arestas);
 
 
+
 		while (no_arest) {
 			arestas_t *aresta = obter_dado(no_arest);
 			vertice_t *v = aresta_get_adjacente(aresta);  //aresta->destino
+			printf("vetice adjacente %p\t  vertice atual %p\n", v , u);
+
+			//exit(EXIT_FAILURE);
 
 			if (vertice_get_distancia(v) == INFINITO){
 				vertice_set_pai(v,u);
 				vertice_set_distancia(v,vertice_get_distancia(u)+1);
 				enqueue(v,Q);
-				printf ("setando no %d, \t Distancia %d \t Pai:%p",
+				printf ("setando no %d, \t Distancia %d \t Pai:%p\n",
 						vertice_get_id(v),
 						vertice_get_distancia(v),
 						vertice_get_distancia(v));
@@ -157,6 +166,7 @@ vertice_t* grafo_adicionar_vertice(grafo_t *grafo, int id) {
 
 	vertice = cria_vertice(id);
 	no = cria_no(vertice);
+
 
 #ifdef DEBUG
 	printf("grafo_adicionar_vertice: %d\t  end:%p\n" , id, vertice);

@@ -19,6 +19,8 @@
 #include "vertice.h"
 #include "../lista_enc/lista_enc.h"
 
+
+
 struct vertices {
 	int id;                /*!< Identificação numérica do vértice  */
 	lista_enc_t *arestas;  /*!< Listas encadeada das arestas pertencentes ao vértice  */
