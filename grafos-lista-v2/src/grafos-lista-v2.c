@@ -37,6 +37,8 @@ int main(void) {
 
 	grafo_t *grafo;
 	grafo_t *grafo_bfs;
+	grafo_t *grafo_dfs;
+
 
 	vertice_t* vertice;
 	vertice_t* vertice_inicial;
@@ -151,15 +153,19 @@ int main(void) {
 
 
 	grafo_bfs = bfs(grafo, vertice_inicial);
-
+	grafo_dfs = dfs(grafo, vertice_inicial);
 
 	//fflush(stdout);
 	exportar_grafo_dot("grafo.dot", grafo);
 	exportar_grafo_dot("grafo_bfs.dot", grafo_bfs);
+	exportar_grafo_dot("grafo_dfs.dot", grafo_dfs);
+
 
 	libera_fila(fila);
 	libera_grafo(grafo);
 	libera_grafo(grafo_bfs);
+	libera_grafo(grafo_dfs);
+
 
 	printf ("fim progr");
 

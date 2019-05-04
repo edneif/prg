@@ -3,7 +3,6 @@
  *
  *  Created on: 29 de abr de 2019
  *      Author: ednei.freiberger
- *  bfs ok  exporta bfs ok dfs
  */
 
 /*
@@ -60,7 +59,7 @@ lista_enc_t* componentes_conexos(grafo_t *grafo);
 
 grafo_t* bfs(grafo_t *grafo, vertice_t* inicial);
 
-void dfs(grafo_t *grafo, vertice_t* inicial);
+grafo_t* dfs(grafo_t *grafo, vertice_t* inicial);
 
 void delay(unsigned int milliseconds);
 
