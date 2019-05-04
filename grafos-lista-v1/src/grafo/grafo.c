@@ -32,8 +32,6 @@
 
 #define INFINITO INT_MAX
 
-
-
 struct grafos {
 	int id; /*!< Identificação numérica do grafo  */
 	lista_enc_t *vertices; /*!< Lista encadeada dos vértices: conjunto V  */
@@ -46,28 +44,26 @@ struct grafos {
  *
  * @retval Nenhum: Vértices são marcados internamente
  */
-void bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
+grafo_t *bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
+
+	printf("Iniciando bfs\n");
 
 	fila_t *Q = cria_fila();
-//	fflush(stdout);
+	grafo_t *grafo_bfs = cria_grafo(0);
 
 	no_t *meu_no_vertice = obter_cabeca(grafo->vertices);
 
-
-
-	while (meu_no_vertice)
-	{
-        vertice_t *meu_vertice = obter_dado(meu_no_vertice);
-		vertice_set_distancia(meu_vertice , INFINITO);
+	while (meu_no_vertice) {
+		vertice_t *meu_vertice = obter_dado(meu_no_vertice);
+		vertice_set_distancia(meu_vertice, INFINITO);
 		vertice_set_pai(meu_vertice, NULL);
-
 		meu_no_vertice = obtem_proximo(meu_no_vertice);
 
 	}
 
-
 	vertice_set_distancia(vertice_inicial, 0);
 	enqueue(vertice_inicial, Q);
+	grafo_adicionar_vertice(grafo_bfs, vertice_get_id(vertice_inicial)); //garrega no pai
 
 	while (!fila_vazia(Q)) {
 
@@ -76,24 +72,30 @@ void bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 		lista_enc_t *lista_arestas = vertice_get_arestas(u);
 		no_t *no_arest = obter_cabeca(lista_arestas);
 
-
-
 		while (no_arest) {
 			arestas_t *aresta = obter_dado(no_arest);
 			vertice_t *v = aresta_get_adjacente(aresta);  //aresta->destino
-			printf("vetice adjacente %p\t  vertice atual %p\n", v , u);
-
+#ifdef DEBUG
+			printf("vetice adjacente %p\t  vertice atual %p\n", v, u);
+#endif //DEBUG
 			//exit(EXIT_FAILURE);
 
-			if (vertice_get_distancia(v) == INFINITO){
-				vertice_set_pai(v,u);
-				vertice_set_distancia(v,vertice_get_distancia(u)+1);
-				enqueue(v,Q);
-				printf ("setando no %d, \t Distancia %d \t Pai:%p\n",
-						vertice_get_id(v),
-						vertice_get_distancia(v),
+			if (vertice_get_distancia(v) == INFINITO) {
+				vertice_set_pai(v, u);
+				vertice_set_distancia(v, vertice_get_distancia(u) + 1);
+				enqueue(v, Q);
+
+				printf("setando no %.2d, \t Distancia %.2d \t Pai:%.2d\n",
+						vertice_get_id(v), vertice_get_distancia(v),
 						vertice_get_id(u));
 
+				grafo_adicionar_vertice(grafo_bfs, vertice_get_id(v)); //carrega no
+				adiciona_adjacentes(grafo_bfs,
+						procura_vertice(grafo_bfs, vertice_get_id(u)), 2,
+						vertice_get_id(v), 1);    //cria aresta pai->filho
+				adiciona_adjacentes(grafo_bfs,
+										procura_vertice(grafo_bfs, vertice_get_id(v)), 2,
+										vertice_get_id(u), 1);    //cria aresta filho->pai
 
 
 			}
@@ -103,11 +105,9 @@ void bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 
 	}
 
+	return grafo_bfs;
+
 }
-
-
-
-
 
 /**
  * @brief  Busca em profundidade
@@ -153,7 +153,6 @@ vertice_t* grafo_adicionar_vertice(grafo_t *grafo, int id) {
 	vertice_t *vertice;
 	no_t *no;
 
-
 	if (grafo == NULL) {
 		fprintf(stderr, "grafo_adicionar_vertice: grafo invalido!");
 		exit(EXIT_FAILURE);
@@ -167,9 +166,8 @@ vertice_t* grafo_adicionar_vertice(grafo_t *grafo, int id) {
 	vertice = cria_vertice(id);
 	no = cria_no(vertice);
 
-
 #ifdef DEBUG
-	printf("grafo_adicionar_vertice: %d\t  end:%p\n" , id, vertice);
+	printf("grafo_adicionar_vertice: %d\t  end:%p\n", id, vertice);
 #endif
 
 	add_cauda(grafo->vertices, no);
@@ -259,7 +257,7 @@ void adiciona_adjacentes(grafo_t *grafo, vertice_t *vertice, int n, ...) {
 #ifdef DEBUG
 		printf("\tvertice: %d\t  end:%p\t ", vertice_get_id(vertice), vertice);
 		printf("\tsucessor: %d\t  end:%p\t ", id_sucessor, sucessor);
-		printf("\tpeso: %d\t end_aresta: %p \n", peso , aresta);
+		printf("\tpeso: %d\t end_aresta: %p \n", peso, aresta);
 #endif
 
 	}
@@ -301,6 +299,10 @@ void exportar_grafo_dot(const char *filename, grafo_t *grafo) {
 
 	fprintf(file, "graph {\n");
 
+#ifdef DEBUG
+	printf("graph {\n");
+#endif // DEBUG
+
 	//obtem todos os nos da lista
 	no_vert = obter_cabeca(grafo->vertices);
 	while (no_vert) {
@@ -333,11 +335,21 @@ void exportar_grafo_dot(const char *filename, grafo_t *grafo) {
 			fprintf(file, "\t%d -- %d [label = %d];\n", vertice_get_id(vertice),
 					vertice_get_id(adjacente), peso);
 
+#ifdef DEBUG
+			printf("\t%d -- %d [label = %d];\n", vertice_get_id(vertice),
+					vertice_get_id(adjacente), peso);
+
+#endif // DEBUG
+
 			no_arest = obtem_proximo(no_arest);
 		}
 		no_vert = obtem_proximo(no_vert);
 	}
 	fprintf(file, "}\n");
+#ifdef DEBUG
+	printf("}\n");
+#endif // DEBUG
+
 	fclose(file);
 }
 
@@ -395,13 +407,11 @@ void libera_grafo(grafo_t *grafo) {
 	free(grafo);
 }
 
+void delay(unsigned int milliseconds) {
 
-void delay(unsigned int milliseconds){
+	clock_t start = clock();
 
-    clock_t start = clock();
-
-    while((clock() - start) * 1000 / CLOCKS_PER_SEC < milliseconds);
+	while ((clock() - start) * 1000 / CLOCKS_PER_SEC < milliseconds)
+		;
 }
-
-
 
