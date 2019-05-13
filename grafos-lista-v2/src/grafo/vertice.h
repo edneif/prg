@@ -83,6 +83,10 @@ void vertice_set_visitado(vertice_t *vertice, int visitado);
  * Ver: struct vertices */
 int vertice_get_visitado(vertice_t *vertice);
 
+/* Obtem membro fonte_grupo da struct vertice
+ * Ver: struct vertices */
+vertice_t* vertice_get_pai(vertice_t *vertice);
+
 
 
 #endif /* GRAFO_VERTICE_H_ */

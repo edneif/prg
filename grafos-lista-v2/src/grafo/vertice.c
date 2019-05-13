@@ -344,6 +344,22 @@ int vertice_get_visitado(vertice_t *vertice) {
 }
 
 
+/**
+  * @brief  Obtém a propriedade fonte de um vértice
+  * @param	vertice: vértice em questão
+  *
+  * @retval int: grupo da aresta
+  */
+vertice_t* vertice_get_pai(vertice_t *vertice) {
+
+	if (vertice == NULL){
+			fprintf(stderr, "vertice_get_grupo: vertice invalido\n");
+			exit(EXIT_FAILURE);
+	}
+
+	return vertice->pai;
+}
+
 
 
 /**

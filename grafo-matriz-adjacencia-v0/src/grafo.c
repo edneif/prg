@@ -170,3 +170,25 @@ int adjacente(grafo_t *g, int u, int v){
 	return ((g->matriz_adj[u][v].adj));
 }
 
+
+void exportar_grafo_dot(const char *filename, grafo_t *grafo){
+
+    FILE* fp = fopen (filename, "w");
+    if (fp == NULL) {
+        printf ("Erro ao abrir o arquivo.\n");
+        exit(1);
+    }
+
+    fprintf(fp, "graph G {\n");
+    int i, j;
+    for (i=0; i < grafo->n_vertices; i++){
+        for (j=0; j < grafo->n_vertices && j<=i; j++){
+            if (adjacente(grafo,i,j)){
+                fprintf(fp, "%d -- %d\n", j, i);
+            }
+        }
+    }
+    fprintf(fp, "}");
+    fclose (fp);
+}
+

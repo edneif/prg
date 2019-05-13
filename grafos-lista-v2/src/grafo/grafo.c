@@ -85,7 +85,7 @@ grafo_t *bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 				vertice_set_distancia(v, vertice_get_distancia(u) + 1);
 				enqueue(v, Q);
 
-				printf("setando no %.2d, \t Distancia %.2d \t Pai:%.2d\n",
+				printf("setando %.2d, \t Distancia %.2d \t Pai:%.2d\n",
 						vertice_get_id(v), vertice_get_distancia(v),
 						vertice_get_id(u));
 
@@ -117,8 +117,7 @@ grafo_t *bfs(grafo_t *grafo, vertice_t* vertice_inicial) {
  */
 grafo_t* dfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 
-	int visitou = 0;
-	vertice_t *v, *ultimo_vertice_visitado;
+	vertice_t *v, *u_v_v;
 
 	printf("Iniciando dfs\n");
 
@@ -136,10 +135,10 @@ grafo_t* dfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 
 	push(vertice_inicial, S);
 
-
 	while (!pilha_vazia(S)) {
 
 		vertice_t *u = pop(S);
+		u_v_v = u;			//ultimo vertice visitado
 
 		if (!vertice_get_visitado(u)) {
 			vertice_set_visitado(u, TRUE);
@@ -152,46 +151,45 @@ grafo_t* dfs(grafo_t *grafo, vertice_t* vertice_inicial) {
 				v =
 						aresta_get_adjacente(aresta);  //aresta->destino
 #ifdef DEBUG
-printf("vetice adjacente %p\t  vertice atual %p\n", v, u);
+								printf("vetice adjacente %p\t  vertice atual %p\n", v, u);
 #endif //DEBUG
 				if (!vertice_get_visitado(v)) {
 					push(v, S);
-					printf("Vertice visitado no %.2d, \t  Vertice origem:%.2d\n",
-							vertice_get_id(v), vertice_get_id(u));
-					visitou = 1;
-					ultimo_vertice_visitado = v;
+					printf("Vertice pai %.2d, \t  Vertice visitado:%.2d\n",
+							vertice_get_id(u), vertice_get_id(v));
+
+					if (!procura_vertice(grafo_dfs, vertice_get_id(u))) {
+						grafo_adicionar_vertice(grafo_dfs,
+								vertice_get_id(u)); //carrega  vertice pai
+#ifdef DEBUG
+										printf("vertice adicionado %0.2d\n",vertice_get_id(u));
+#endif //DEBUG
+
+					}
+
+					if (!procura_vertice(grafo_dfs, vertice_get_id(v))) {
+						grafo_adicionar_vertice(grafo_dfs,
+								vertice_get_id(v)); //carrega vertice filho
+#ifdef DEBUG
+										printf("vertice adicionado %0.2d\n",vertice_get_id(v));
+#endif //DEBUG
+
+						fflush(stdout);
+
+						adiciona_adjacentes(grafo_dfs,
+								procura_vertice(grafo_dfs,
+										vertice_get_id(u_v_v)), 2,
+								vertice_get_id(v), 1); //cria aresta pai->filho
+						adiciona_adjacentes(grafo_dfs,
+								procura_vertice(grafo_dfs, vertice_get_id(v)),
+								2, vertice_get_id(u_v_v), 1); //cria aresta filho->pai
+
+						u_v_v = v;
+
+					}
+
 				}
 				no_arest = obtem_proximo(no_arest);
-			}
-			if (!procura_vertice(grafo_dfs,	vertice_get_id(ultimo_vertice_visitado))){
-				    grafo_adicionar_vertice(grafo_dfs,	vertice_get_id(ultimo_vertice_visitado)); //carrega ultimo vertice encontrado do pai
-#ifdef DEBUG
-printf("vertice adicionado %0.2d\n",vertice_get_id(ultimo_vertice_visitado));
-#endif //DEBUG
-
-
-
-			}
-
-			if (!procura_vertice(grafo_dfs,	vertice_get_id(u))){
-							    grafo_adicionar_vertice(grafo_dfs,	vertice_get_id(u)); //carrega ultimo vertice encontrado do pai
-#ifdef DEBUG
-printf("vertice adicionado %0.2d\n",vertice_get_id(u));
-#endif //DEBUG
-
-			}
-
-
-
-
-			fflush(stdout);
-			if (visitou) {
-				adiciona_adjacentes(grafo_dfs,
-						procura_vertice(grafo_dfs, vertice_get_id(u)), 2,
-						vertice_get_id(ultimo_vertice_visitado), 1); //cria aresta pai->filho
-				adiciona_adjacentes(grafo_dfs, procura_vertice(grafo_dfs, vertice_get_id(ultimo_vertice_visitado)), 2,
-						vertice_get_id(u), 1);    //cria aresta filho->pai
-				visitou = 0;
 			}
 
 		}

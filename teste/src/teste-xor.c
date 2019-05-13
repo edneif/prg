@@ -10,25 +10,34 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 int main(void) {
 
-	int a,b,c,r,rant,rpro;
-
-	a= 0x100;  //nap = 542
-	b= 0x542;  //nap = 600 axc
-	c= 0x700;  //nap = 224 bxd
-	d =0x766;  //nap = 700
 
 
-	r = a ^ b;
+	int startTime = clock();
 
-   rant = r ^ a;
-
-
-
- printf ( "   %x\n   %x\n = %x\n   %x\n", a,b,r,rant);
 
 	puts("!!!Hello World!!!"); /* prints !!!Hello World!!! */
+	fflush(stdout);
+
+
+	//for(i=0;i<1000000000;i++) ;
+	sleep(5);
+
+	int finalTime = clock();
+
+
+//	int difernça = difftime(finalTime, startTime);
+
+
+	printf("time %d  %d   ", startTime, finalTime);
+
+
+
+
+
 	return EXIT_SUCCESS;
 }
