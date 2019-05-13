@@ -80,6 +80,6 @@ int main(void) {
 	libera_grafo(g);
 
 
-	printf("fim prg");
+	printf("fim prg v1");
 	return EXIT_SUCCESS;
 }
