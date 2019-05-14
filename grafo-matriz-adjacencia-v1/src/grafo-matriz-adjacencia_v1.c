@@ -17,6 +17,9 @@
  Copyright   : Renan, todo os direitos reservados
  Description : grafos com matriz de adjacencia, Ansi-style
  ============================================================================
+
+FALTA FAZER BUSCAS EM LARGURA E PROFUNDIDADE
+
  */
 
 #include <stdio.h>

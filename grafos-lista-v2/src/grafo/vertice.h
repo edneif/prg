@@ -89,4 +89,8 @@ vertice_t* vertice_get_pai(vertice_t *vertice);
 
 
 
+
+
+
+
 #endif /* GRAFO_VERTICE_H_ */
