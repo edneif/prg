@@ -34,40 +34,23 @@
 
 int main(void) {
 
-
 	arvore_t *arvore;
-	arvore_t *arvore_bfs;
-	arvore_t *arvore_dfs;
-
-
 	vertice_t* vertice;
-	vertice_t* vertice_inicial;
-
-	int id;
 
 	arvore = cria_arvore(0);
 
 
 	//Adiciona todos os vertices na arvore
-vertice = arvore_adicionar_vertice_id(arvore, 16);
+	vertice = arvore_adicionar_vertice_id(arvore, 16);
 	arvore_set_raiz(arvore, vertice);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 14);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 10);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 8);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 7);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 2);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 4);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 1);
-
 	vertice = arvore_adicionar_vertice_id(arvore, 9);
-
 	vertice = arvore_adicionar_vertice_id(arvore,3);
 
 	arvore_adiciona_filhos(arvore, arvore_procura_vertice(arvore,16),14,10);
@@ -77,24 +60,14 @@ vertice = arvore_adicionar_vertice_id(arvore, 16);
 	arvore_adiciona_filhos(arvore, arvore_procura_vertice(arvore,10),9, 3);
 
 
-
-
-
-
-	//arvore_bfs = bfs(arvore, vertice_inicial);
-	//arvore_dfs = dfs(arvore, vertice_inicial);
-
-	//fflush(stdout);
 	arvore_exportar_grafo_dot("arvore.dot", arvore);
-//	exportar_arvore_dot("arvore_bfs.dot", arvore_bfs);
-//	exportar_arvore_dot("arvore_dfs.dot", arvore_dfs);
 
+	bfs_pre_ordem_interativo(arvore_procura_vertice(arvore,16));
+
+	bfs_pos_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
 
 	libera_arvore(arvore);
-	//libera_arvore(arvore_bfs);
-	//libera_arvore(arvore_dfs);
-
 
 	printf ("fim progr v00");
 

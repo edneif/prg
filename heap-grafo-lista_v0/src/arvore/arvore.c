@@ -17,17 +17,18 @@
 
 #include "vertice.h"
 #include "arvore.h"
+#include "../pilha/pilha.h"
+#include "../fila/fila.h"
 
 #define FALSE 0
 #define TRUE 1
+#define DEBUG
 
 struct arvores {
 	int id; /*!< Identificação numérica da árvore */
 	vertice_t *raiz; /*!< Ponteiro para o vértice raiz  */
 	lista_enc_t *vertices; /*!< Lista encadeada de vértices  */
 };
-
-
 
 /**
  * @brief  Cria uma árvore. Grau depende do vértice.
@@ -95,7 +96,7 @@ vertice_t* arvore_adicionar_vertice(arvore_t *arvore, vertice_t *vertice) {
 	no_t *no;
 
 #ifdef DEBUG
-	printf("grafo_adicionar_vertice: %d\n", id);
+	printf("grafo_adicionar_vertice: %d\n", vertice_get_id(vertice));
 #endif
 
 	if (arvore == NULL) {
@@ -200,44 +201,87 @@ void arvore_exportar_grafo_dot(const char *filename, arvore_t *arvore) {
 
 	fprintf(fp, "graph G {\n");
 
-
 	no_vert = arvore->raiz;
-    arvore_pre_ordem_recusivo(no_vert, fp);
+	bfs_pre_ordem_recusivo(no_vert, fp);
 
-    fprintf(fp, "\n }\n");
-    fclose(fp);
+	fprintf(fp, "\n }\n");
+	fclose(fp);
 
 }
 
 
 
-void arvore_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp){
 
+void bfs_pre_ordem_interativo(vertice_t* no_vert) {
+
+	pilha_t * pilha;
+
+	pilha = cria_pilha();
 
 	if (!no_vert)
 		return;
 
+	push(no_vert, pilha);
+
+	while (!pilha_vazia(pilha)) {
+		no_vert = pop(pilha);
+
+		if (vertice_get_dir(no_vert))
+			push(vertice_get_dir(no_vert), pilha);
+
+		if (vertice_get_esq(no_vert))
+			push(vertice_get_esq(no_vert), pilha);
+
+#ifdef DEBUG
+		printf("pre_ordem interativo -> vertice visitado: %d\n",
+				vertice_get_id(no_vert));
+#endif // DEBUG
+
+	}
+
+	libera_pilha(pilha);
+}
+
+
+
+void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
+
+	if (!no_vert)
+		return;
 
 	if (vertice_get_esq(no_vert))
-	fprintf(fp, "\t%d -- %d [label = %d];\n", vertice_get_id(no_vert),
-			vertice_get_id(vertice_get_esq(no_vert)), 1);
+		fprintf(fp, "\t%d -- %d [label = %d];\n", vertice_get_id(no_vert),
+				vertice_get_id(vertice_get_esq(no_vert)), 1);
 	if (vertice_get_dir(no_vert))
 		fprintf(fp, "\t%d -- %d [label = %d];\n", vertice_get_id(no_vert),
 				vertice_get_id(vertice_get_dir(no_vert)), 1);
 
-
-
 #ifdef DEBUG
-
-
+	printf("bfs_pre_ordem recursico->vertice visitado: %d\n",
+			vertice_get_id(no_vert));
 #endif // DEBUG
 
-
-	arvore_pre_ordem_recusivo(vertice_get_esq(no_vert),fp);
-	arvore_pre_ordem_recusivo(vertice_get_dir(no_vert),fp);
-
+	bfs_pre_ordem_recusivo(vertice_get_esq(no_vert), fp);
+	bfs_pre_ordem_recusivo(vertice_get_dir(no_vert), fp);
 
 }
+
+
+void bfs_pos_ordem_recusivo(vertice_t* no_vert) {
+
+	if (!no_vert)
+		return;
+
+	bfs_pos_ordem_recusivo(vertice_get_esq(no_vert));
+	bfs_pos_ordem_recusivo(vertice_get_dir(no_vert));
+
+#ifdef DEBUG
+	printf("bfs_pos_ordem recursico->vertice visitado: %d\n",
+			vertice_get_id(no_vert));
+#endif // DEBUG
+
+}
+
 
 
 
