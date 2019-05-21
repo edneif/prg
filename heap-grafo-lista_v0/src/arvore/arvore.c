@@ -244,6 +244,7 @@ void bfs_pre_ordem_interativo(vertice_t* no_vert) {
 
 
 
+
 void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
 
 	if (!no_vert)
@@ -256,6 +257,7 @@ void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
 		fprintf(fp, "\t%d -- %d [label = %d];\n", vertice_get_id(no_vert),
 				vertice_get_id(vertice_get_dir(no_vert)), 1);
 
+
 #ifdef DEBUG
 	printf("bfs_pre_ordem recursico->vertice visitado: %d\n",
 			vertice_get_id(no_vert));
@@ -265,6 +267,7 @@ void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
 	bfs_pre_ordem_recusivo(vertice_get_dir(no_vert), fp);
 
 }
+
 
 
 void bfs_pos_ordem_recusivo(vertice_t* no_vert) {
@@ -281,6 +284,28 @@ void bfs_pos_ordem_recusivo(vertice_t* no_vert) {
 #endif // DEBUG
 
 }
+
+
+void bfs_ordem_recusivo(vertice_t* no_vert) {
+
+	if (!no_vert)
+		return;
+
+	bfs_ordem_recusivo(vertice_get_esq(no_vert));
+
+#ifdef DEBUG
+	printf("bfs_ordem recursico->vertice visitado: %d\n",
+			vertice_get_id(no_vert));
+#endif // DEBUG
+
+
+	bfs_ordem_recusivo(vertice_get_dir(no_vert));
+
+
+}
+
+
+
 
 
 

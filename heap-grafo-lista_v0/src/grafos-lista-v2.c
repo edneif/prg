@@ -66,6 +66,9 @@ int main(void) {
 
 	bfs_pos_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
+	bfs_ordem_recusivo(arvore_procura_vertice(arvore,16));
+
+
 
 	libera_arvore(arvore);
 
