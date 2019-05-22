@@ -27,15 +27,14 @@
 #include "pilha/pilha.h"
 #include "fila/fila.h"
 #include "arvore/arvore.h"
-
-
-
+#include "heap/heap.h"
 
 
 int main(void) {
 
 	arvore_t *arvore;
 	vertice_t* vertice;
+	heap_t * heap;
 
 	arvore = cria_arvore(0);
 
@@ -68,9 +67,14 @@ int main(void) {
 
 	bfs_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
-
-
 	libera_arvore(arvore);
+
+
+
+    int array[] = {16,14,10,8,2,4,7,1,9,3};
+    heap = heap_cria(1,15);
+    heap_from_vetor (heap, &array[0], 9);
+
 
 	printf ("fim progr v00");
 
