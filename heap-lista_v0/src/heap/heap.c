@@ -69,6 +69,9 @@ void heap_from_vetor(heap_t* heap, int* array, int tamanho) {
 
 }
 
+
+
+
 void heap_set_vertice(heap_t* heap, int vertice, int valor) {
 	if (heap == NULL) {
 		fprintf(stderr, "heap inválido!");
@@ -76,6 +79,10 @@ void heap_set_vertice(heap_t* heap, int vertice, int valor) {
 	}
 	heap->vertice[vertice] = valor;
 }
+
+
+
+
 
 void heap_max_heapify(heap_t* heap, int vertice) {
 	if (heap == NULL) {

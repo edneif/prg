@@ -66,10 +66,15 @@ int main(void) {
 
 	bfs_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
+    dfs(arvore, arvore_procura_vertice(arvore,16));
+
+
+
+
 	libera_arvore(arvore);
 
 
-	printf ("fim progr v00");
+	printf ("fim progr v0");
 
 	return EXIT_SUCCESS;
 }

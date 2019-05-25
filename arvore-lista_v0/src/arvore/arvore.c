@@ -202,17 +202,14 @@ void arvore_exportar_grafo_dot(const char *filename, arvore_t *arvore) {
 	fprintf(fp, "graph G {\n");
 
 	no_vert = arvore->raiz;
-	bfs_pre_ordem_recusivo(no_vert, fp);
+	dfs_pre_ordem_recusivo(no_vert, fp);
 
 	fprintf(fp, "\n }\n");
 	fclose(fp);
 
 }
 
-
-
-
-void bfs_pre_ordem_interativo(vertice_t* no_vert) {
+void dfs_pre_ordem_interativo(vertice_t* no_vert) {
 
 	pilha_t * pilha;
 
@@ -242,10 +239,7 @@ void bfs_pre_ordem_interativo(vertice_t* no_vert) {
 	libera_pilha(pilha);
 }
 
-
-
-
-void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
+void dfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
 
 	if (!no_vert)
 		return;
@@ -257,59 +251,46 @@ void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp) {
 		fprintf(fp, "\t%d -- %d [label = %d];\n", vertice_get_id(no_vert),
 				vertice_get_id(vertice_get_dir(no_vert)), 1);
 
-
 #ifdef DEBUG
-	printf("bfs_pre_ordem recursico->vertice visitado: %d\n",
+	printf("dfs_pre_ordem recursico->vertice visitado: %d\n",
 			vertice_get_id(no_vert));
 #endif // DEBUG
 
-	bfs_pre_ordem_recusivo(vertice_get_esq(no_vert), fp);
-	bfs_pre_ordem_recusivo(vertice_get_dir(no_vert), fp);
+	dfs_pre_ordem_recusivo(vertice_get_esq(no_vert), fp);
+	dfs_pre_ordem_recusivo(vertice_get_dir(no_vert), fp);
 
 }
 
-
-
-void bfs_pos_ordem_recusivo(vertice_t* no_vert) {
+void dfs_pos_ordem_recusivo(vertice_t* no_vert) {
 
 	if (!no_vert)
 		return;
 
-	bfs_pos_ordem_recusivo(vertice_get_esq(no_vert));
-	bfs_pos_ordem_recusivo(vertice_get_dir(no_vert));
+	dfs_pos_ordem_recusivo(vertice_get_esq(no_vert));
+	dfs_pos_ordem_recusivo(vertice_get_dir(no_vert));
 
 #ifdef DEBUG
-	printf("bfs_pos_ordem recursico->vertice visitado: %d\n",
+	printf("dfs_pos_ordem recursico->vertice visitado: %d\n",
 			vertice_get_id(no_vert));
 #endif // DEBUG
 
 }
 
-
-void bfs_ordem_recusivo(vertice_t* no_vert) {
+void dfs_ordem_recusivo(vertice_t* no_vert) {
 
 	if (!no_vert)
 		return;
 
-	bfs_ordem_recusivo(vertice_get_esq(no_vert));
+	dfs_ordem_recusivo(vertice_get_esq(no_vert));
 
 #ifdef DEBUG
-	printf("bfs_ordem recursico->vertice visitado: %d\n",
+	printf("dfs_ordem recursico->vertice visitado: %d\n",
 			vertice_get_id(no_vert));
 #endif // DEBUG
 
-
-	bfs_ordem_recusivo(vertice_get_dir(no_vert));
-
+	dfs_ordem_recusivo(vertice_get_dir(no_vert));
 
 }
-
-
-
-
-
-
-
 
 /**
  * @brief  Libera memória dinâmica de uma uma árvore.
@@ -369,3 +350,43 @@ lista_enc_t *arvore_obter_vertices(arvore_t *arvore) {
 	return arvore->vertices;
 }
 
+/**
+ * @brief  Busca em largura
+ * @param	grafo: ponteiro do grafo que se deseja executar a busca
+ * @param  inicial: ponteiro do vértice inicial (fonte) da busca
+ *
+ * @retval Nenhum: Vértices são marcados internamente
+ */
+void bfs(arvore_t* arvore, vertice_t* inicial) {
+	if (arvore == NULL) {
+#ifdef DEBUG
+		fprintf(stderr, "bfs: arvore invalida\n");
+#endif // DEBUG
+		exit(EXIT_FAILURE);
+	}
+	if (inicial == NULL) {
+#ifdef DEBUG
+		fprintf(stderr, "bfs: vertice invalido\n");
+#endif // DEBUG
+		exit(EXIT_FAILURE);
+	}
+
+	fila_t* Q = cria_fila();
+	vertice_t* v;
+
+#ifdef DEBUG
+	printf("\nIniciando bfs busca em largura...\n");
+#endif // DEBUG
+
+	enqueue(inicial, Q);
+	///Busca
+	while (!fila_vazia(Q)) {
+		v = dequeue(Q);
+		printf("%d ", vertice_get_id(v));
+		if (vertice_get_esq(v))
+			enqueue(vertice_get_esq(v), Q);
+		if (vertice_get_dir(v))
+			enqueue(vertice_get_dir(v), Q);
+
+	}
+}

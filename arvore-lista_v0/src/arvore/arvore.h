@@ -32,11 +32,12 @@ void libera_arvore(arvore_t *arvore);
 vertice_t* arvore_procura_vertice(arvore_t *arvore, int id);
 
 
-void bfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp);
-void bfs_pre_ordem_interativo(vertice_t* no_vert);
-void bfs_pos_ordem_recusivo(vertice_t* no_vert);
-void bfs_ordem_recusivo(vertice_t* no_vert);
+void dfs_pre_ordem_recusivo(vertice_t* no_vert, FILE* fp);  //profundidade
+void dfs_pre_ordem_interativo(vertice_t* no_vert);
+void dfs_pos_ordem_recusivo(vertice_t* no_vert);
+void dfs_ordem_recusivo(vertice_t* no_vert);
 
+void bfs(arvore_t* arvore, vertice_t* inicial);  //largura
 
 
 
