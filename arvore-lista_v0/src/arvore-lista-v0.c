@@ -60,13 +60,13 @@ int main(void) {
 
 	arvore_exportar_grafo_dot("arvore.dot", arvore);
 
-	dfs_pre_ordem_interativo(arvore_procura_vertice(arvore,16));
+	dfs_pre_ordem_interativo(arvore_procura_vertice(arvore,16)); //profundidade
 
 	dfs_pos_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
 	dfs_ordem_recusivo(arvore_procura_vertice(arvore,16));
 
-    bfs(arvore, arvore_procura_vertice(arvore,16));
+    bfs(arvore, arvore_procura_vertice(arvore,16));  //largura
 
 
 

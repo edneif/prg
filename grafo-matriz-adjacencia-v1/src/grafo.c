@@ -17,10 +17,14 @@
 #include <string.h>
 
 #include "grafo.h"
+#include "fila_adj/fila_adj.h"
+#include "pilha_adj/pilha_adj.h"
 
 struct vertices {
 	int id;         /*!< Identificação numérica do vértice  */
-
+	int dist;
+	int pai;
+	int visitado;
     /* Mais informações, se necessário */
 };
 
@@ -191,4 +195,73 @@ void exportar_grafo_dot(const char *filename, grafo_t *grafo){
     fprintf(fp, "}");
     fclose (fp);
 }
+
+
+
+void printNodes (grafo_t* g){
+    int i;
+
+    printf("PRINTING NODES\n");
+    for (i=0; i < g->n_vertices; i++)
+        printf("vertice: % d\tdist: % d\tpai: % d \tvisitado: % d\n", i, g->vertices[i].dist, g->vertices[i].pai, g->vertices[i].visitado);
+}
+
+
+void bfs_buscaLargura (grafo_t* g, int vertice){   //procuras todos vertices ajacentes
+    int v, u;
+    fila_t* fila = cria_fila(10);
+
+    for (v=0; v < g->n_vertices; v++){
+        g->vertices[v].dist = -1;
+        g->vertices[v].pai = -1;
+        g->vertices[v].id = v;
+
+    }
+
+    g->vertices[vertice].dist = 0;
+
+    enqueue (fila, vertice);
+
+    while (queueSize(fila)!=0){
+        u = dequeue(fila);
+
+        for (v=0; v < g->n_vertices; v++){
+            if (adjacente(g, v, u) && g->vertices[v].dist==-1){
+                g->vertices[v].dist = g->vertices[u].dist + 1;
+                g->vertices[v].pai = u;
+                printf ("pai: %d \t filho: %d \t dist: %d \n", g->vertices[v].pai,
+                		g->vertices[v].id, g->vertices[v].dist);
+                enqueue(fila, v);
+            }
+        }
+    }
+}
+
+void dfs_buscaProfundidade(grafo_t* g, int vertice){
+    int v, u;
+    pilha_t* stack = cria_pilha(10);
+
+    for (v=0; v < g->n_vertices; v++){
+        g->vertices[v].visitado = 0;
+        g->vertices[v].id = v;
+    }
+
+    push (stack, vertice);
+
+    while (stackSize(stack)!=0){
+        u = pop(stack);
+
+        if (g->vertices[u].visitado == 0){
+            g->vertices[u].visitado = 1;
+            printf("visitado %d\n", g->vertices[u].id);
+            for (v=0; v < g->n_vertices; v++){
+                if (adjacente(g, v, u)){
+                    push (stack, v);
+                }
+            }
+        }
+    }
+}
+
+
 

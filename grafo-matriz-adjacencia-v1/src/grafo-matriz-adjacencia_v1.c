@@ -27,6 +27,7 @@ FALTA FAZER BUSCAS EM LARGURA E PROFUNDIDADE
 
 #include "grafo.h"
 
+
 int main(void) {
 
 
@@ -78,11 +79,18 @@ int main(void) {
 			printf("[%d] [%d] : %d\n", i,j, adjacente(g,i,j));
 	}
 
-	exportar_grafo_dot("grafo.dot", g);
 
+	bfs_buscaLargura (g, 1);
+	dfs_buscaProfundidade(g, 1);
+	//printNodes(g);
+
+
+
+
+	exportar_grafo_dot("grafo.dot", g);
 	libera_grafo(g);
 
 
-	printf("fim prg v1");
+	printf("fim prg v01");
 	return EXIT_SUCCESS;
 }

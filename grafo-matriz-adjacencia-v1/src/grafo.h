@@ -30,4 +30,10 @@ int rem_adjacencia(grafo_t *g, int u, int v);
 int adjacente(grafo_t *g, int u, int v);
 void exportar_grafo_dot(const char *filename, grafo_t *grafo);
 
+void printNodes (grafo_t* g);
+void bfs_buscaLargura (grafo_t* g, int vertice);
+void dfs_buscaProfundidade(grafo_t* g, int vertice);
+
+
+
 #endif /* GRAFO_H_ */
