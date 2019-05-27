@@ -308,3 +308,18 @@ void *remover_no(lista_enc_t *lista, no_t *no_removido)
 }
 
 
+void libera_lista_enc(lista_enc_t* lista){
+
+	no_t* meu_no;
+	no_t* meu_no_proximo;
+	meu_no = obter_cabeca(lista);
+	while(meu_no){
+		meu_no_proximo = obtem_proximo(meu_no);
+		libera_no(meu_no);
+		meu_no = meu_no_proximo;
+
+	}
+
+	free(lista);
+
+}

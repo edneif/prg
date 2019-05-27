@@ -12,13 +12,15 @@
  *      Author: Renan Augusto Starke
  */
 
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "vertice.h"
-#include "arvore.h"
-#include "../pilha/pilha.h"
+#include "../arvore/vertice.h"
+#include "../arvore/arvore.h"
 #include "../fila/fila.h"
+#include "../pilha/pilha.h"
+
 
 #define FALSE 0
 #define TRUE 1

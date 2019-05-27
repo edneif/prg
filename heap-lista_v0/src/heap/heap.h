@@ -30,7 +30,7 @@ int heap_get_right_child (heap_t* heap, int vertice);
 
 void heap_export_dot (const char *filename, heap_t* heap);
 
-
+void libera_heap (heap_t* heap);
 
 
 

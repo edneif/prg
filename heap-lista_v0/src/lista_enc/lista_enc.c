@@ -5,11 +5,12 @@
  *      Author: ednei.freiberger
  */
 
+#include "../lista_enc/lista_enc.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "lista_enc.h"
-#include "no.h"
+#include "../lista_enc/no.h"
 
 #define FALSE 0
 #define TRUE 1

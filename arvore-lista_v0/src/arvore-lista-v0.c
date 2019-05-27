@@ -27,7 +27,6 @@
 #include "pilha/pilha.h"
 #include "fila/fila.h"
 #include "arvore/arvore.h"
-#include "heap/heap.h"
 
 
 int main(void) {

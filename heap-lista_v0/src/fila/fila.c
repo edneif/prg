@@ -1,9 +1,10 @@
+#include "../fila/fila.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "../lista_enc/lista_enc.h"
 #include "../lista_enc/no.h"
-#include "fila.h"
 
 #define FALSO 0
 #define VERDADEIRO 1

@@ -5,10 +5,11 @@
  *      Author: ednei.freiberger
  */
 
+#include "../lista_enc/no.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "no.h"
 
 struct nos{
     void* dados;     /*!< Referência do dado respectiva ao nó da lista encadeada. */

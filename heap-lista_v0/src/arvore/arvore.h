@@ -14,7 +14,7 @@
 #ifndef SRC_ARVORE_ARVORE_H_
 #define SRC_ARVORE_ARVORE_H_
 
-#include "vertice.h"
+#include "../arvore/vertice.h"
 
 typedef struct arvores arvore_t;
 

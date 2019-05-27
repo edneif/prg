@@ -5,12 +5,13 @@
  *      Author: ednei.freiberger
  */
 
+#include "../pilha/pilha.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
 #include "../lista_enc/lista_enc.h"
 #include "../lista_enc/no.h"
-#include "pilha.h"
 
 //#define DEBUG
 

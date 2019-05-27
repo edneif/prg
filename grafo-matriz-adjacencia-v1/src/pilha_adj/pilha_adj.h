@@ -48,4 +48,7 @@ int pop(pilha_t *pilha);
   */
 int stackSize (pilha_t* stack);
 
+
+void libera_pilha(pilha_t* stack);
+
 #endif /* PILHA_ADJ_PILHA_ADJ_H_ */

@@ -154,3 +154,9 @@ no_t *obtem_anterior (no_t *no)
     return no->anterior;
 }
 
+void libera_no(no_t * no){
+
+	free(no->dados);
+	free(no);
+
+}

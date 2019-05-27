@@ -24,10 +24,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "pilha/pilha.h"
-#include "fila/fila.h"
 #include "arvore/arvore.h"
+#include "fila/fila.h"
 #include "heap/heap.h"
+#include "pilha/pilha.h"
 
 #define tamanho_array 10
 
@@ -48,7 +48,9 @@ int main(void) {
 
 	heap_export_dot("heap.dot", heap);
 
-	printf("\nfim progr v0");
+	libera_heap(heap);
+
+	printf("\nfim progr v000");
 
 	return EXIT_SUCCESS;
 

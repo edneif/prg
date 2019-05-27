@@ -235,6 +235,8 @@ void bfs_buscaLargura (grafo_t* g, int vertice){   //procuras todos vertices aja
             }
         }
     }
+
+    libera_fila(fila);
 }
 
 void dfs_buscaProfundidade(grafo_t* g, int vertice){
@@ -261,6 +263,8 @@ void dfs_buscaProfundidade(grafo_t* g, int vertice){
             }
         }
     }
+
+   libera_pilha(stack);
 }
 
 

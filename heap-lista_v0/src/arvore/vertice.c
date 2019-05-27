@@ -12,10 +12,11 @@
  *      Author: Renan Augusto Starke
  */
 
+#include "../arvore/vertice.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "vertice.h"
 #include "../lista_enc/lista_enc.h"
 
 #define TRUE 1

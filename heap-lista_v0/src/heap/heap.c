@@ -9,9 +9,10 @@
 #include <stdio.h>
 #include <limits.h>
 
+#include "heap.h"
+
 #include "../lista_enc/lista_enc.h"
 #include "../lista_enc/no.h"
-#include "heap.h"
 
 #define FALSO 0
 #define VERDADEIRO 1
@@ -185,5 +186,14 @@ void heap_export_dot(const char *filename, heap_t* heap) {
 			fprintf(file, "%d -- %d;\n", i, heap_get_right_child(heap, i));
 	}
 	fprintf(file, "}");
+	fclose(file);
+}
+
+
+void libera_heap (heap_t* heap){
+
+	free(heap->vertice);
+	free(heap);
+
 
 }

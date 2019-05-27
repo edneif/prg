@@ -82,6 +82,12 @@ int stackSize (pilha_t* stack){
     return stack->topo;
 }
 
+void libera_pilha(pilha_t* stack){
+
+	free(stack->data);
+	free(stack);
+
+}
 
 
 
