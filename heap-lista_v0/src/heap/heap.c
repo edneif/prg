@@ -11,8 +11,6 @@
 
 #include "heap.h"
 
-#include "../lista_enc/lista_enc.h"
-#include "../lista_enc/no.h"
 
 #define FALSO 0
 #define VERDADEIRO 1
@@ -71,8 +69,6 @@ void heap_from_vetor(heap_t* heap, int* array, int tamanho) {
 }
 
 
-
-
 void heap_set_vertice(heap_t* heap, int vertice, int valor) {
 	if (heap == NULL) {
 		fprintf(stderr, "heap inválido!");
@@ -80,8 +76,6 @@ void heap_set_vertice(heap_t* heap, int vertice, int valor) {
 	}
 	heap->vertice[vertice] = valor;
 }
-
-
 
 
 

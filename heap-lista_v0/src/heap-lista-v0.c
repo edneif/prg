@@ -24,10 +24,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-#include "arvore/arvore.h"
-#include "fila/fila.h"
+
+
 #include "heap/heap.h"
-#include "pilha/pilha.h"
+
 
 #define tamanho_array 10
 
