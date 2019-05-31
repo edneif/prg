@@ -51,14 +51,16 @@ heap_t* heap_cria(int id, int tamanho) {
 }
 
 void heap_from_vetor(heap_t* heap, int* array, int tamanho) {
-	int i;
+	int i, pai_ultimo_indice;
 
 	for (i = 0; i < tamanho; i++) {
 		heap_set_vertice(heap, i, array[i]);   //copia array para heap
 	}
 
-	for (i = 0; i <= (tamanho) / 2 - 1; i++)
+	pai_ultimo_indice = (tamanho-2)/2;
+	for (i = pai_ultimo_indice ; i >= 0 ; i--)
 		heap_max_heapify(heap, i);
+
 
 #ifdef DEBUG
 	printf("Heap \n");

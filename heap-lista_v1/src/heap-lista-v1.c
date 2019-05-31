@@ -36,7 +36,7 @@ int main(void) {
 	//int array[tamanho_array];
 	heap_t * heap;
 
-	int array[] = {8,8,2,5,9,1,0,2,2,7};
+	int array[] = {8,8,2,5,9,1,10,30,40,15};
 	srand(time(NULL));
 
 	for (i = 0; i < tamanho_array; i++) {
@@ -50,7 +50,7 @@ int main(void) {
 
 	libera_heap(heap);
 
-	printf("\nfim progr v000");
+	printf("\nfim progr v01");
 
 	return EXIT_SUCCESS;
 
