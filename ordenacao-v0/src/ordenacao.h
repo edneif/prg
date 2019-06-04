@@ -11,7 +11,15 @@
 
 
 void buble_sort (int * array, int tamanho);
-
 void swap (int *x, int *y);
+
+int media_de_tres (int *array, int esq, int dir);
+int partition(int *array, int esq, int dir);
+
+void quicksort(int *array, int esq, int dir);
+
+void insertsort(int *array, int tamanho);
+void insertbinsort (int* array, int tamanho);
+
 
 #endif /* ORDENACAO_H_ */
