@@ -139,17 +139,21 @@ void bubblesort(lista_enc_t * lista){
 	no_t *meu_no = obter_cabeca(lista);
 
 
-	for (i = obter_tamanho(lista); i > 1 ;i-- )
+	for (i = obter_tamanho(lista); i > 1 ;i-- ){
+		meu_no = obter_cabeca(lista);
 		for (j=0 ; j<i-1 ; j++ ){
            dado_meu_no = obter_dado(meu_no);
 	       dado_no_proximo = obter_dado(obter_proximo(meu_no));
 		   if (dado_meu_no->valor > dado_no_proximo->valor)
-			   	 swap_no(lista, meu_no, obter_proximo(meu_no));
-		   else
-		      meu_no = obter_proximo(meu_no);
+			   	 swap_dado_no(lista, meu_no, obter_proximo(meu_no));
+
+		    meu_no = obter_proximo(meu_no);
+		   // printf("no %d   %d\n",dado_meu_no->indice, dado_no_proximo->indice);
+		   // fflush(stdout);
+
 		}
 
-
+	}
 
 }
 

@@ -56,13 +56,11 @@ void exc_cabeca(lista_enc_t *lista);
 void exc_cauda(lista_enc_t *lista);
 
 
-
-
 void add_cabeca(lista_enc_t *lista, no_t* elemento);
 
 int obter_tamanho(lista_enc_t * lista);
 
-void swap_no(lista_enc_t* lista, no_t * fonte, no_t *destino);
+void swap_dado_no(lista_enc_t* lista, no_t * fonte, no_t *destino);
 
 no_t *obter_cauda(lista_enc_t *lista);
 

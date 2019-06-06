@@ -25,7 +25,4 @@ void bubblesort(lista_enc_t * lista);
 
 
 
-
-
-
 #endif // DADOS_H_INCLUDED

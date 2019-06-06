@@ -3,6 +3,7 @@
 
 #include "lista_enc.h"
 #include "no.h"
+#include "dados.h"
 
 //#define DEBUG
 
@@ -182,46 +183,12 @@ int obter_tamanho(lista_enc_t * lista) {
 
 }
 
-void swap_no(lista_enc_t* lista, no_t * fonte, no_t *destino) {
+void swap_dado_no(lista_enc_t* lista, no_t * fonte, no_t *destino) {
 
-	no_t *no_temp_proximo;
-
-	if (obter_cabeca(lista) == fonte) {   //no fonte é primeiro da lista
-
-		set_proximo(fonte, obter_proximo(destino));
-		set_anterior(fonte, destino);
-
-		set_anterior(obter_proximo(destino), fonte);
-		desligar_no_anterior(destino);    //desliga proximo e anterior
-		set_proximo(destino, fonte);
-		lista->cabeca = destino;
-
-	} else if (obter_cauda(lista) == destino) {     //no destino é fim lista
-
-		lista->cauda = fonte;
-		set_anterior(destino, obter_anterior(fonte));
-
-		desligar_no_anterior(fonte);   //desliga proximo e anterior
-		set_anterior(fonte, destino);
-
-		set_proximo(destino, fonte);
-
-	}
-
-	else {
-
-		no_temp_proximo = obter_proximo(destino);
-
-		set_proximo(obter_anterior(fonte),destino);
-		set_proximo(destino, fonte);
-		set_anterior(destino,obter_anterior(fonte));
-
-		set_proximo(fonte,no_temp_proximo);
-		set_anterior(fonte,destino);
-
-
-
-	}
+	dado_t *temp_dado;
+	temp_dado =obter_dado(fonte);
+	set_dado(fonte,obter_dado(destino));
+	set_dado(destino, temp_dado);
 
 
 }

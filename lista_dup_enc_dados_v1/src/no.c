@@ -159,4 +159,9 @@ void set_anterior(no_t *no, no_t *anterior){
 }
 
 
+void set_dado(no_t *no, void *dado){
 
+	no->dados = dado;
+
+
+}

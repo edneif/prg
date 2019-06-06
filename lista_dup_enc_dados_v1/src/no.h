@@ -88,5 +88,7 @@ void set_proximo(no_t * no, no_t *proximo);
 
 void set_anterior(no_t * no, no_t *anterior);
 
+void set_dado(no_t *no, void *dado);
+
 
 #endif // NO_H_INCLUDED
