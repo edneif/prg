@@ -365,10 +365,15 @@ void exportar_grafo_dot(const char *filename, grafo_t *grafo) {
 
 			fprintf(file, "\t%d -- %d [label = %d];\n", vertice_get_id(vertice),
 					vertice_get_id(adjacente), peso);
+			//fprintf(file, "\t%d -- %d [label = %d];\n", vertice_get_id(adjacente),
+			//					vertice_get_id(vertice), peso);
+
 
 #ifdef DEBUG
+
 			printf("\t%d -- %d [label = %d];\n", vertice_get_id(vertice),
-					vertice_get_id(adjacente), peso);
+								vertice_get_id(adjacente), peso);
+
 
 #endif // DEBUG
 

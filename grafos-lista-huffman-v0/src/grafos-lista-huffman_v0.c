@@ -36,7 +36,6 @@ int main(void) {
 
 
 	grafo_t *grafo;
-
 	
     grafo = huffman();
 

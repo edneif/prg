@@ -9,12 +9,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <limits.h>
+#include <string.h>
 
-#include "fila/fila.h"
-#include "grafo/grafo.h"
+#include "../fila/fila.h"
+#include "../arvore/arvore.h"
 #include "huffman.h"
 
-#define DEBUG
+//#define DEBUG
 
 struct huffmans {
 	int codchar;
@@ -23,17 +24,20 @@ struct huffmans {
 	char *code;
 };
 
-grafo_t* huffman(void) {
+arvore_t* huffman(void) {
 	int i, tam_frase, raiz;
 	int tabela_freq[255];
+	char codificacao[16] = "";
 
-	fila_t *fila;
-	huffman_t *huffman_ret1, *huffman_ret2, *huffman_raiz;
-	grafo_t *grafo = cria_grafo(1);
+	fila_t *fila, *fila_ori;
+	vertice_t *vertice;
+	huffman_t *huffman_ret1, *huffman_ret2, *huffman_raiz, *huffman_temp;
+	arvore_t *arvore = cria_arvore(1);
 
 	raiz = 300;
 
 	fila = cria_fila();
+	fila_ori = cria_fila();
 
 	char frase[] = "teste tabela hofmman ok";
 
@@ -54,15 +58,16 @@ grafo_t* huffman(void) {
 			huffman->codchar = i;
 			huffman->freq = tabela_freq[i];
 			enqueue(huffman, fila);
+			enqueue(huffman, fila_ori);  //guarda copia da lista
 
-#ifdef DEBUG
 			printf("enqueue: %c Freq: %d \n ", huffman->codchar, huffman->freq);
-#endif // DEBUG
 
 		}
 
 	huffman_ret1 = retorna_fila_menor(fila);
-	grafo_adicionar_vertice(grafo, huffman_ret1->codchar);
+	vertice = arvore_adicionar_vertice_id(arvore, huffman_ret1->codchar);
+	vertice_set_freq(vertice, huffman_ret1->freq);
+
 #ifdef DEBUG
 	printf("dequeue: %c  %d Freq: %d \n ", huffman_ret1->codchar,
 			huffman_ret1->codchar, huffman_ret1->freq);
@@ -71,8 +76,11 @@ grafo_t* huffman(void) {
 	while (!fila_vazia(fila)) {
 
 		huffman_ret2 = retorna_fila_menor(fila);
-		if (huffman_ret2->codchar < 300)			//verifica se nao é raiz
-			grafo_adicionar_vertice(grafo, huffman_ret2->codchar);
+		if (huffman_ret2->codchar < 300) {			//verifica se nao é raiz
+			vertice = arvore_adicionar_vertice_id(arvore,
+					huffman_ret2->codchar);
+			vertice_set_freq(vertice, huffman_ret2->freq);
+		}
 #ifdef DEBUG
 		printf("dequeue: %c  %d Freq: %d \n ", huffman_ret2->codchar,
 				huffman_ret2->codchar, huffman_ret2->freq);
@@ -80,17 +88,18 @@ grafo_t* huffman(void) {
 
 		huffman_raiz = malloc(sizeof(huffman_t));
 		huffman_raiz->codchar = raiz;
-		huffman_raiz->freq = huffman_ret1->freq + huffman_ret1->freq;
+		huffman_raiz->freq = huffman_ret1->freq + huffman_ret2->freq;
 
-		grafo_adicionar_vertice(grafo, huffman_raiz->codchar);
+		vertice = arvore_adicionar_vertice_id(arvore, huffman_raiz->codchar);
+		vertice_set_freq(vertice, huffman_raiz->freq);
 
 #ifdef DEBUG
 		printf("enqueue: %c  %d Freq: %d \n ", huffman_raiz->codchar,
 				huffman_raiz->codchar, huffman_raiz->freq);
 #endif // DEBUG
 
-		adiciona_adjacentes(grafo, procura_vertice(grafo, raiz), 4,
-				huffman_ret2->codchar, 0, huffman_ret1->codchar, 1);
+		arvore_adiciona_filhos(arvore, arvore_procura_vertice(arvore, raiz),
+				huffman_ret2->codchar, huffman_ret1->codchar); //
 
 		huffman_ret1 = huffman_raiz;
 		raiz++;
@@ -98,13 +107,29 @@ grafo_t* huffman(void) {
 
 	}
 
+	arvore_set_raiz(arvore, vertice);
+
+	//carrega codigo huffman na estrutura
+	while (!fila_vazia(fila_ori)) {
+		huffman_temp = dequeue(fila_ori);
+		cod_huffman(arvore_procura_vertice(arvore, huffman_temp->codchar),
+				arvore_get_raiz(arvore), frase[1], &codificacao);
+		huffman_temp->code = codificacao;
+		printf("cod char: %c  freq: %d  Cod_huff: %s \n ",
+				huffman_temp->codchar, huffman_temp->freq, huffman_temp->code);
+	    free(huffman_temp);
+	}
+
 	free(fila);
-	return (grafo);
+	free(fila_ori);
+	return (arvore);
 
 }
 
+//---------------------------------------
 //retorna o menor prioridade da fila
 //retina da fila
+//---------------------------------------
 
 huffman_t* retorna_fila_menor(fila_t *fila1) {
 
@@ -148,4 +173,38 @@ huffman_t* retorna_fila_menor(fila_t *fila1) {
 	huffman_ret = huffman_menor_freq;
 	free(fila2);
 	return huffman_ret;
+}
+
+//--------------------------------------------------------------------
+//
+//retorna o menor prioridade da fila
+//retina da fila
+//
+//--------------------------------------------------------------------
+
+void cod_huffman(vertice_t* no_vert, vertice_t *raiz, char codchar,
+		char* codificacao) {
+	strcpy(codificacao, "");
+
+	vertice_t *vertice_pai;
+
+	if (!no_vert) {
+		fprintf(stderr, "add_cauda: ponteiros invalidos");
+		exit(EXIT_FAILURE);
+	}
+
+	while (raiz != no_vert) {
+		vertice_pai = vertice_get_pai(no_vert);
+		if (vertice_get_esq(vertice_pai) == no_vert) { //verifica no esquerda do pai
+			//printf("esq\t");
+			strcat(codificacao, "0");
+		}
+		if (vertice_get_dir(vertice_pai) == no_vert) { //verifica no esquerda do pai
+			//printf("dir	\t");
+			strcat(codificacao, "1");
+		}
+		no_vert = vertice_pai;
+
+	}
+
 }

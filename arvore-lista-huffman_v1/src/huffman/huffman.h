@@ -12,11 +12,11 @@
 typedef struct huffmans huffman_t;
 
 
-grafo_t* huffman(void);
+arvore_t* huffman(void);
 
 huffman_t* retorna_fila_menor(fila_t *fila1);
 
-
+void cod_huffman(vertice_t* no_vert, vertice_t *raiz, char codchar, char* codificacao);
 
 
 #endif /* HUFFMAN_H_ */
