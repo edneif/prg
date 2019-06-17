@@ -140,11 +140,12 @@ arvore_t* huffman(void) {
 		huffman_temp->code = codificacao;
 		printf("cod char: %c  freq: %d  Cod_huff: %s \n ",
 				huffman_temp->codchar, huffman_temp->freq, huffman_temp->code);
+		free(huffman_temp);
 	}
 
 	return (arvore);
-	free(fila);
-	free(fila_ori);
+	libera_fila(fila);
+	libera_fila(fila_ori);
 }
 
 //--------------------------------------------------------------------
@@ -193,7 +194,7 @@ huffman_t* retorna_fila_menor(fila_t *fila1) {
 	}
 
 	huffman_ret = huffman_menor_freq;
-	free(fila2);
+	libera_fila(fila2);
 	return huffman_ret;
 }
 

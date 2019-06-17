@@ -99,7 +99,7 @@ void libera_fila(fila_t* fila)
 		exit(EXIT_FAILURE);
     }
 
-    free(fila->dados);
+    libera_lista_enc(fila->dados);
     free(fila);
 }
 

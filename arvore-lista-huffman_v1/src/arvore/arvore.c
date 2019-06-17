@@ -322,6 +322,8 @@ void dfs_ordem_recusivo(vertice_t* no_vert) {
  */
 void libera_arvore(arvore_t* arvore) {
 
+
+
 	libera_lista_enc(arvore->vertices);
 	free(arvore);
 
