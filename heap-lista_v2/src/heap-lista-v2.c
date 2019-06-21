@@ -29,18 +29,20 @@
 #include "heap/heap.h"
 
 
-#define tamanho_array 10
+#define tamanho_array 100000
 
 int main(void) {
 	int i;
-	//int array[tamanho_array];
+	int array[tamanho_array];
 	heap_t *heap, *heap2;
 
-	int array[] = {8,8,2,5,9,1,10,30,40,15};
-	srand(time(NULL));
+	clock_t heap_start = 0, heap_end = 0, heap_total = 0;
 
+
+	//int array[] = {8,8,2,5,9,1,10,30,40,15};
+	srand(time(NULL));
 	for (i = 0; i < tamanho_array; i++) {
-		//array[i] = rand() % tamanho_array;
+		array[i] = rand() % tamanho_array;
 	}
 
 	heap = heap_cria(1, tamanho_array);
@@ -51,7 +53,17 @@ int main(void) {
 
 	heap_export_dot("heap.dot", heap);
 
+
+
+	puts("!!!iniciando Heap_sort!!!\n");
+	heap_start = clock();
 	heap_sort(heap2);
+	heap_end = clock();
+	heap_total = heap_end - heap_start;
+	printf("\n| Heap Total  | %f",
+			(double) heap_total / (CLOCKS_PER_SEC));
+
+
 
 
 	libera_heap(heap);
