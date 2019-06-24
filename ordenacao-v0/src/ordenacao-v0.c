@@ -15,7 +15,7 @@
 
 #include "ordenacao.h"
 
-#define tamanho_array 100000
+#define tamanho_array 10
 #define repeticoes 20
 
 int main(void) {
@@ -123,7 +123,7 @@ int main(void) {
 
 	}
 
-	puts("\n\n!!fim prog   !!!");
+	puts("\n\n!!fim prog  v13 !!!");
 	return EXIT_SUCCESS;
 }
 

@@ -29,7 +29,7 @@
 #include "heap/heap.h"
 
 
-#define tamanho_array 100000
+#define tamanho_array 10
 
 int main(void) {
 	int i;

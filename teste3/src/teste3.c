@@ -59,7 +59,7 @@ int main(){
     libera_lista_tarefas(lista_tarefas);
     libera_tarefas(vetor, n_tarefas);
 
-    printf("fim prog");
+    printf("fim prog  v");
 
 	return 0;
 }
