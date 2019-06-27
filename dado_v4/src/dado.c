@@ -38,7 +38,7 @@ int main()
 
     libera_memoria(controle);  //libera memorias alocadas
 
-
+    printf("fim prog");
 
 return 0;
 
