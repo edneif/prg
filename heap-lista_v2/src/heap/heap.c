@@ -200,7 +200,7 @@ void heap_sort(heap_t *heap){
 	   int i;
 	   for ( i=heap->tamanho ; i>=1 ; i--){
 		   swap(&heap->vertice[0], &heap->vertice[i-1]);
-           printf(" %d\t" , heap->vertice[i-1]);
+           //printf(" %d\t" , heap->vertice[i-1]);
 		   heap_set_tamanho(heap, i-1);
            heap_max_heapify(heap, 0);
 

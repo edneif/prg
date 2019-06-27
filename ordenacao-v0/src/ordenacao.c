@@ -98,25 +98,83 @@ void insertsort(int *array, int tamanho) {
 
 }
 
-
-void insertbinsort (int* array, int tamanho){
-	int i,j, tmp, meio, esq, dir;
-	for(i=1 ; i<tamanho ; i++){
+void insertbinsort(int* array, int tamanho) {
+	int i, j, tmp, meio, esq, dir;
+	for (i = 1; i < tamanho; i++) {
 		tmp = array[i];
 		esq = 0;
-		dir =i;
-		while (esq<dir){
-			meio = (esq + dir)/2;
-			if (tmp>=array[meio])
-				esq=meio+1;
+		dir = i;
+		while (esq < dir) {
+			meio = (esq + dir) / 2;
+			if (tmp >= array[meio])
+				esq = meio + 1;
 			else
 				dir = meio;
 
 		}
-		for (j=i ; j>esq; j--)
-			swap(&array[j-1], &array[j]);
+		for (j = i; j > esq; j--)
+			swap(&array[j - 1], &array[j]);
 
 	}
 
 }
+
+//use mergesort
+void funde(int *array, int esq, int meio, int dir, int *temp_array) {
+
+	int i = esq;
+	int j = esq;
+	int k = meio+1;
+
+	while (j <= meio && k <= dir) {
+
+		if (array[j] < array[k])
+			temp_array[i++] = array[j++];
+		else
+			temp_array[i++] = array[k++];
+
+	}
+		while (j <= meio) {
+			temp_array[i++] = array[j++];
+		}
+		for (i = esq; i < k; i++) {
+			array[i] = temp_array[i];
+		}
+
+
+}
+
+void mergesort(int *array, int esq, int dir, int *temp_array) {
+
+	if (esq < dir) {
+
+		int meio = (esq + dir) / 2;
+
+		mergesort(array, esq, meio, temp_array);
+		mergesort(array, meio + 1, dir, temp_array);
+
+		funde(array, esq, meio, dir, temp_array);
+
+	}
+
+}
+
+
+
+void selection_sort (int *array, int tamanho){
+	int i,j;
+	for ( i = tamanho; i > 1 ; i--){
+	int max = 0;
+	for (j = 1 ; j < i ; j++)            //procura maximo do array
+		if (array[j] > array[max])
+			max = j;
+
+	if (i-1 != max)                        //necessario troca feito por xor
+	   swap (&array[i-1], &array[max]);   //troca posicoes do vetor
+	}
+
+
+}
+
+
 
