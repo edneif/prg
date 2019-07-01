@@ -16,7 +16,7 @@
 #include "ordenacao.h"
 
 #define tamanho_array 10
-#define repeticoes 20
+#define repeticoes 1
 
 int main(void) {
 
@@ -45,7 +45,7 @@ int main(void) {
 		//puts("!!!iniciando Quicksort!!!\n");
 		quicksort_start = clock();
 		quicksort(array, 0, tamanho_array - 1); //usar posicao inicial e final vetor
-		quicksort_end = clock();
+		//quicksort_end = clock();
 		quicksort_total += quicksort_end - quicksort_start;
 		printf("\n| Quicksort T  | %f",
 				(double) quicksort_total / (j * CLOCKS_PER_SEC));
@@ -58,7 +58,7 @@ int main(void) {
 		}
 		//puts("!!!iniciando Insertsort!!!\n");
 		insertsort_start = clock();
-		insertsort(array, tamanho_array);
+		//insertsort(array, tamanho_array);
 		insertsort_end = clock();
 		insertsort_total += insertsort_end - insertsort_start;
 		printf("\n| InsertSort T | %f",
@@ -86,7 +86,7 @@ int main(void) {
 		}
 		//puts("!!!iniciando Bubble!!!\n");
 		buble_start = clock();
-		buble_sort(array, tamanho_array);
+		//buble_sort(array, tamanho_array);
 		buble_end = clock();
 		buble_total += buble_end - buble_start;
 		printf("\n| Buble Total  | %f",
@@ -99,7 +99,7 @@ int main(void) {
 		}
 		//puts("!!!iniciando MergeSort!!!\n");
 		mergesort_start = clock();
-		mergesort(array, 0, tamanho_array - 1, temp_array); //usar posicao inicial e final do vetor
+		//mergesort(array, 0, tamanho_array - 1, temp_array); //usar posicao inicial e final do vetor
 		mergesort_end = clock();
 		mergesort_total += mergesort_end - mergesort_start;
 		printf("\n| Merger Total  | %f",
@@ -112,7 +112,7 @@ int main(void) {
 		}
 		//puts("!!!iniciando selectionsort!!!\n");
 		selectionsort_start = clock();
-		selection_sort(array, tamanho_array);
+		//selection_sort(array, tamanho_array);
 		selectionsort_end = clock();
 		selectionsort_total += selectionsort_end - selectionsort_start;
 		printf("\n| Select Total  | %f",

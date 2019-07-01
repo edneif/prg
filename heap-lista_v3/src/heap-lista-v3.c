@@ -24,27 +24,20 @@
 #include <stdlib.h>
 #include <time.h>
 
+
+
 #include "heap/heap.h"
-#include "tarefa.h"
+
 
 #define tamanho_array 10
 
 int main(void) {
 	int i;
 	int array[tamanho_array];
-	heap_t *heap;
+	heap_t *heap, *heap2;
 
-	int n_tarefas;
-	lista_enc_t* lista_tarefas;
-	tarefa_t **vetor;
+	clock_t heap_start = 0, heap_end = 0, heap_total = 0;
 
-	/* Carrega dados e imprime */
-	lista_tarefas = importar_csv_linkedList("dados.csv");
-	n_tarefas = obter_tamanho(lista_tarefas);
-	imprimir_lista_tarefas(lista_tarefas);
-
-	/* Passa para um vetor e ordena o vetor */
-	vetor = lista_para_vetor(lista_tarefas);
 
 	//int array[] = {8,8,2,5,9,1,10,30,40,15};
 	srand(time(NULL));
@@ -52,19 +45,32 @@ int main(void) {
 		array[i] = rand() % tamanho_array;
 	}
 
-	heap = heap_cria(1, n_tarefas);
+	heap = heap_cria(1, tamanho_array);
+	heap2 = heap_cria(2, tamanho_array);
 
-	heap_from_vetor(heap, vetor, n_tarefas);
+	heap_from_vetor(heap, &array[0], tamanho_array);
+	heap_from_vetor(heap2, &array[0], tamanho_array);
+
+	heap_export_dot("heap.dot", heap);
 
 
-	//heap_export_dot("heap.dot", heap);
 
-	//heap_sort(heap);
+	puts("!!!iniciando Heap_sort!!!\n");
+	heap_start = clock();
+	heap_sort(heap2);
+	heap_end = clock();
+	heap_total = heap_end - heap_start;
+	printf("\n| Heap Total  | %f",
+			(double) heap_total / (CLOCKS_PER_SEC));
 
-	//libera_heap(heap);
 
-	printf("\nfim progr v03");
+
+
+	libera_heap(heap);
+
+	printf("\nfim progr v01");
 
 	return EXIT_SUCCESS;
+
 
 }

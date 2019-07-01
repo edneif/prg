@@ -9,13 +9,14 @@
 #define HEAP_HEAP_H_
 
 typedef struct heaps heap_t;
+typedef struct dados dado_t;
 
 
 heap_t* heap_cria (int id, int tamanho);
 
-void heap_from_vetor (heap_t* heap, int** array, int tamanho);
+void heap_from_vetor (heap_t* heap, int* array, int tamanho);
 
-void heap_set_vertice (heap_t* heap, int vertice, void* valor);
+void heap_set_vertice (heap_t* heap, int vertice, int valor);
 
 void heap_max_heapify (heap_t* heap, int vertice);
 

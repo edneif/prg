@@ -10,7 +10,6 @@
 #include <limits.h>
 
 #include "heap.h"
-#include "../tarefa.h"
 
 
 #define FALSO 0
@@ -22,21 +21,31 @@
 struct heaps {
 	int indice; /* */
 	int tamanho;
-	int **vertice;
-
+	int *vertice;
+	void *hvertice; /*array de vertices*/
 };
+
+struct dados{
+	int id;
+	int u;
+	float d;
+};
+
+
 
 heap_t* heap_cria(int id, int tamanho) {
 	int i;
 	heap_t* heap;
+
+
 
 	heap = malloc(sizeof(heap_t));
 	if (heap == NULL) {
 		perror("heap_new:");
 		exit(EXIT_FAILURE);
 	}
-	heap->vertice = malloc(sizeof(tarefa_t*) * tamanho);
-
+	heap->hvertice = malloc(sizeof(dado_t*) * tamanho);
+	heap->vertice = malloc(sizeof(int) * tamanho);
 	if (heap->vertice == NULL) {
 		perror("novo heap:");
 		exit(EXIT_FAILURE);
@@ -46,7 +55,7 @@ heap_t* heap_cria(int id, int tamanho) {
 	heap->tamanho = tamanho;
 	for (i = 0; i < tamanho; i++) {
 		heap->vertice[i] = INFINITE;
-
+		heap->hvertice[i] = INFINITE;
 	}
 #ifdef DEBUG
 	printf("Heap %d criado\n", id);
@@ -54,12 +63,15 @@ heap_t* heap_cria(int id, int tamanho) {
 	return heap;
 }
 
-void heap_from_vetor(heap_t* heap, int** array, int tamanho) {
+void heap_from_vetor(heap_t* heap, int* array, int tamanho) {
 	int i, pai_ultimo_indice;
 
 	for (i = 0; i < tamanho; i++) {
-		heap_set_vertice(heap, i, &array[i]);   //copia array para heap
+		heap_set_vertice(heap, i, array[i]);   //copia array para heap
 	}
+
+	heap->hvertice[i]->
+
 
 	pai_ultimo_indice = (tamanho-2)/2;
 	for (i = pai_ultimo_indice ; i >= 0 ; i--)
@@ -75,13 +87,12 @@ void heap_from_vetor(heap_t* heap, int** array, int tamanho) {
 }
 
 
-void heap_set_vertice(heap_t* heap, int vertice, void* valor) {
+void heap_set_vertice(heap_t* heap, int vertice, int valor) {
 	if (heap == NULL) {
 		fprintf(stderr, "heap inválido!");
 		exit(EXIT_FAILURE);
 	}
 	heap->vertice[vertice] = valor;
-
 }
 
 
@@ -122,9 +133,9 @@ int heap_get_vertice(heap_t* heap, int vertice) {
 		exit(EXIT_FAILURE);
 	}
 
-	return tarefa_obter_U(*heap->vertice[vertice]);
-
+	return heap->vertice[vertice];
 }
+
 int heap_get_left_child(heap_t* heap, int vertice) {
 	if (heap == NULL) {   // || vertice >= heap->size)	{
 		fprintf(stderr, "heap_get_left_child: heap ou vértice inválido!");
